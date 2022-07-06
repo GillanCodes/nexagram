@@ -40,6 +40,10 @@ const corsOptions = {
   }
 app.use(cors(corsOptions));
 
+let authRoutes = require('./src/routes/auth.routes.js');
+app.use('/api/auth', authRoutes)
+
+
 //Port Listen Init
 server.listen(process.env.PORT, () => {
     console.log('Listening on : ' + process.env.PORT);

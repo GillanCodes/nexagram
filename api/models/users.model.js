@@ -40,38 +40,7 @@ const userSchema = new mongoose.Schema({
                 type: String,
                 default: './cdn/content/default-user-pics.png'
             },
-            x: {
-                type: Number,
-                default: 0
-            },
-            y: {
-                type: Number,
-                default: 0
-            },
-            cX: {
-                type: Number,
-                default: 0
-            },
-            cY: {
-                type: Number,
-                default: 0
-            },
-            scale: {
-                type: Number,
-                default: 1
-            }
     },
-    userSettings: {
-        type: {
-            lang: String,
-            home_view: String
-        }
-    },
-    logs: {
-        type: [{ 
-            date: String,
-        }]
-    }
 }, {
     timestamps: true
 });
