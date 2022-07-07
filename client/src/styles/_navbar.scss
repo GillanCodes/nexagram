@@ -1,0 +1,54 @@
+// Main nav
+nav.nav-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    font-family: watergalon;
+    font-size: 20px;
+
+    height: 3em;
+
+    a {
+        text-decoration: none;
+        padding: 0 5px;
+    }
+
+    div.one-third {
+        width: 33%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+    
+
+    div.icons {
+        display: flex;
+        align-items: center;
+    }
+
+    div.search {
+        width: 200px;
+
+        border: 1px solid black;
+        background-color: white;
+
+        display: flex;
+        flex-direction: raw;
+        align-items: center;
+        
+        border-radius: 5px;
+
+        span {
+            padding: 0px 10px;
+        }
+
+        input {
+            border: none;
+            outline: none;
+        }
+
+    }
+}
