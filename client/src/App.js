@@ -4,6 +4,7 @@ import './styles/index.scss';
 import {useDispatch} from "react-redux";
 import axios from 'axios';
 import { getUser } from './actions/user.actions';
+import { UIdContext } from './components/App.context';
 
 
 function App() {
@@ -34,7 +35,9 @@ function App() {
 
   return (
     <div className="App">
-      <Routes />
+      <UIdContext.Provider value={UId}>
+        <Routes />
+      </UIdContext.Provider>
     </div>
   );
 }

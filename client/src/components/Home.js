@@ -10,12 +10,13 @@ import Login from './Auth/Login';
 export default function Home() {
 
   const uid = useContext(UIdContext);
-  const userData = useSelector(state => state.userReducer);
+  const userData = useSelector(state => state.userReducers);
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLogged, setIsLogged] = useState(false);
 
   useEffect(() => {
+    console.log(!isEmpty(userData))
     if (!isEmpty(uid) && !isEmpty(userData)) { 
       setIsLogged(true);
       setIsLoading(false);

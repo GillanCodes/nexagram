@@ -32,8 +32,7 @@ export default function Login() {
                 // if (res.data.errors.password) return Error.innerHTML = res.data.errors.password;
                 // if (res.data.errors.ban) return Error.innerHTML = res.data.errors.ban;
             } else {
-                // window.location = '/';
-                console.log(res);
+                window.location = '/';
             }
         }).catch((err) => {
             console.log(err)
@@ -64,6 +63,12 @@ export default function Login() {
                 </div>
                 <div className="googleLogin">
                     <p><i className="fa-brands fa-google"></i> Ce connecter avec Google</p>
+                <div className="spacer">
+                    <span></span>
+                </div>
+                <div className="register">
+                    <a href="/register">Je n'ai pas de compte</a>
+                </div>
                 </div>
             </div>
         </div>

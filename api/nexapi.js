@@ -22,9 +22,10 @@ app.use(cookieParser())
 
 //cors
 let cors = require('cors');
-let whiteList = [process.env.CLIENT_URL, process.env.DASHBOARD_URL, undefined, "127.0.0.1"];
+let whiteList = [process.env.CLIENT_URL, undefined, "127.0.0.1"];
 const corsOptions = {
     origin: function (origin, callback) {
+      console.log(origin)
       if (whiteList.indexOf(origin) !== -1) {
         callback(null, true)
       } else {
@@ -49,6 +50,9 @@ app.get('/jwtid', requireAuth, (req ,res) => {
 
 let authRoutes = require('./src/routes/auth.routes.js');
 app.use('/api/auth', authRoutes)
+
+let userRoutes = require('./src/routes/user.routes.js');
+app.use('/api/user', userRoutes)
 
 
 //Port Listen Init
