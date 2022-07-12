@@ -36,11 +36,15 @@ module.exports.register = async(req, res) => {
 module.exports.login = async(req, res) => {
     const {username, password} = req.body;
 
+    
+
     try {
         var user = await userModel.login(username, password);
+        console.log(user)
         userModel.find(user._id, 
             (err, data) => {
             const token = createToken(user._id);
+            console.log(token)
             res.cookie('user', token, {httpOnly: true, maxAge});
             res.status(201).json({user:user.username, id:user._id});
         })

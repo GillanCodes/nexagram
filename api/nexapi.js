@@ -40,6 +40,13 @@ const corsOptions = {
   }
 app.use(cors(corsOptions));
 
+const { requireAuth, checkUser } = require("./middlewares/auth.middlewares");
+app.use(checkUser)
+//JWT
+app.get('/jwtid', requireAuth, (req ,res) => {
+  res.status(200).send(res.locals.user._id);
+})
+
 let authRoutes = require('./src/routes/auth.routes.js');
 app.use('/api/auth', authRoutes)
 

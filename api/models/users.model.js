@@ -54,17 +54,15 @@ userSchema.pre("save", async function(next) {
 
 userSchema.statics.login = async function(username, password) {
 
+
+
     const user = await this.findOne({username});
     if (user) {
-        if(user.ban.isBan) {
-            throw Error('banned user')
+        const auth = await bcrypt.compare(password, user.password);
+        if (auth) {
+            return user;
         } else {
-            const auth = await bcrypt.compare(password, user.password);
-            if (auth) {
-                return user;
-            } else {
-                throw Error('incorrect password')
-            }
+            throw Error('incorrect password')
         }
         
     } else {
