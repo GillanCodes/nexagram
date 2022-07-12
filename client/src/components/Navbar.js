@@ -29,7 +29,7 @@ export default function Navbar() {
                 <NavLink exact="true" to="/activity" className={"nav-item"}>
                     <i className="fa-regular fa-heart"></i>
                 </NavLink>
-                <NavLink exact="true" to="/profil" className={"nav-item"}>
+                <NavLink exact="true" to="/profile" className={"nav-item"}>
                     <p>PP</p>
                 </NavLink>
             </div>

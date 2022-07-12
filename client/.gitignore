@@ -24,4 +24,6 @@ yarn-error.log*
 
 .env
 
+/public/cdn/
+
 /public/assets/fontawesome
