@@ -23,10 +23,12 @@ export default function Profile() {
               <label htmlFor="image">
               <img src={process.env.PUBLIC_URL + userData.userPic} alt="picture" />
               </label>
-              <input type="file" name="image" id="image" onChange={(event) => handleImage(event)} />
+              <input type="file" name="image" id="image" className='profile-pic' onChange={(event) => handleImage(event)} />
             </>
         ) : (
-            <Avatar img={image} userData={userData} />
+            <div className="cropping">
+              <Avatar img={image} userData={userData} />
+            </div>
         )}
 
     </div>

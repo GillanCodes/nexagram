@@ -137,29 +137,32 @@ export default function Avatar({img, userData}) {
 
     return (
         <div>
-            <div className='crop-container'>
+            <div className="crop-container">
+              <div className="crop">
                 <Cropper
-                    image={userImage}
-                    crop={crop}
-                    rotation={rotation}
-                    zoom={zoom}
-                    aspect={1/1}
-                    onCropChange={setCrop}
-                    onRotationChange={setRotation}
-                    onCropComplete={onCropComplete}
-                    onZoomChange={setZoom}
-                    />
-            </div>
-            <Slider 
-                    value={zoom}
-                    onChange={(e, newValue) => setZoom(newValue)}
-                    min={1}
-                    max={3}
-                    step={0.00001}
-                    valueLabelDisplay="on"
+                  image={userImage}
+                  crop={crop}
+                  rotation={rotation}
+                  zoom={zoom}
+                  aspect={1/1}
+                  onCropChange={setCrop}
+                  onRotationChange={setRotation}
+                  onCropComplete={onCropComplete}
+                  onZoomChange={setZoom}
                 />
-
-            <p onClick={() => showCroppedImage()}>Save</p>
+              </div>
+              <div className="zoom">
+                <Slider 
+                  value={zoom}
+                  onChange={(e, newValue) => setZoom(newValue)}
+                  min={1}
+                  max={3}
+                  step={0.00001}
+                  valueLabelDisplay="on"
+                />
+              </div>
+            </div>
+            <p onClick={() => showCroppedImage()} className="save-button">Save</p>
         </div>
     )
 }

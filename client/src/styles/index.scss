@@ -4,6 +4,7 @@
 
 @import './navbar';
 @import './auth';
+@import './profile';
 
 body {
     margin: 0;
@@ -41,12 +42,3 @@ body {
     }
 }
 
-
-
-// DEV TEST
-
-.crop-container {
-    position: relative;
-    height: 200px;
-    width: 200px;
-}
