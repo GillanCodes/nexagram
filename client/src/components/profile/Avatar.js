@@ -1,12 +1,29 @@
 import React, { useCallback, useRef, useState } from 'react';
 import Cropper from 'react-easy-crop';
 import { Slider } from "@mui/material"
+import axios from 'axios';
 
-export default function Avatar({img}) {
+export default function Avatar({img, userData}) {
 
     const userImage = img;
 
-    console.log(img)
+    const picHandle = (file) => {
+
+      const data = new FormData();
+      data.append('file', file);
+      data.append('username', userData.username);
+      data.append('userId', userData._id)
+
+      axios({
+        method: 'POST',
+        url: `${process.env.REACT_APP_API_URL}/api/user/uplaod/picture`,
+        withCredentials: true,
+        data: data
+      }).then((res) => {
+        window.location = ""
+      })
+    }
+
     const createImage = (url) =>
     new Promise((resolve, reject) => {
       const image = new Image()
@@ -87,7 +104,8 @@ export default function Avatar({img}) {
 
         return new Promise((resolve, reject) => {
           canvas.toBlob((file) => {
-            resolve(URL.createObjectURL(file))
+            var final = new File([file], "pp.png", {type: 'image/png'});
+            picHandle(file);
           }, 'image/jpeg')
 
           
@@ -107,16 +125,11 @@ export default function Avatar({img}) {
 
     const showCroppedImage = useCallback(async () => {
         try {
-        const croppedImage = await getCroppedImg(
-            userImage,
-            croppedAreaPixels,
-            rotation
-        )
-        console.log('donee', { croppedImage })
-        setCroppedImage(croppedImage)
-            document.getElementById('img').src = croppedImage
-            var file = new File([croppedImage], 'testFinal.png', Blob); // Final File to uplaod
-
+            const croppedImage = await getCroppedImg(
+                userImage,
+                croppedAreaPixels,
+                rotation
+            )
         } catch (e) {
         console.error(e)
         }
@@ -146,9 +159,7 @@ export default function Avatar({img}) {
                     valueLabelDisplay="on"
                 />
 
-            <p onClick={() => showCroppedImage()}>crop</p>
-
-            <img src="" alt=""  id="img"/>
+            <p onClick={() => showCroppedImage()}>Save</p>
         </div>
     )
 }

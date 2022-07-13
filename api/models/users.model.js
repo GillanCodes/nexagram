@@ -36,10 +36,8 @@ const userSchema = new mongoose.Schema({
         default: false
     },
     userPic : {
-            imageUrl: {
-                type: String,
-                default: './cdn/content/default-user-pics.png'
-            },
+        type: String,
+        default: './cdn/content/default-user-pics.png'
     },
 }, {
     timestamps: true
